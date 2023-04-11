@@ -13,6 +13,15 @@ req.onreadystatechange = function () {
       // div 변수를 선언하여 document에 div 엘리먼트를 생성하는 함수 할당
       div.setAttribute("class", "image");
       // class = "image"를 포함하고 있는 div 태그 생성
+      div.onclick = function () {
+        // if (this.getAttribute("class").indexOf("image-selected") == -1) {
+        //   this.setAttribute("class", "image image-selected");
+        // } else {
+        //   this.setAttribute("class", "image");
+        // }
+        this.classList.toggle("image-selected");
+        //<div class ="image image-selected"> 생성
+      };
       var img = document.createElement("img");
       // img 태그 생성
       img.src = data[i]; // src에 datap[i] 인덱스 값을 소스로 전달.
