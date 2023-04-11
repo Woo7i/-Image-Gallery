@@ -35,3 +35,22 @@ req.onreadystatechange = function () {
 };
 
 req.send();
+
+function selectAll(btn) {
+  var images = document.getElementsByClassName("image");
+  // image를 포함한 div 태그를 검색
+  for (var i = 0; i < images.length; i++) {
+    if (btn.value === "Unselect All") {
+      images[i].classList.remove("image-selected");
+    } else {
+      images[i].classList.add("image-selected");
+    }
+  }
+
+  if (btn.value === "Unselect All") {
+    btn.value = "Select All";
+  } else {
+    btn.value = "Unselect All";
+  }
+  // btn.value = "Unselect All";
+}

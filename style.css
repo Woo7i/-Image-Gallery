@@ -1,7 +1,6 @@
 body {
-  /* display: flex; */
   overflow: hidden;
-  height: 1000vh;
+  /* height: 1000vh; */
 }
 .image {
   position: relative;
