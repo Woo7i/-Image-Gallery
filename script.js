@@ -22,6 +22,18 @@ req.onreadystatechange = function () {
         this.classList.toggle("image-selected");
         //<div class ="image image-selected"> 생성
       };
+
+      div.onmouseover = function () {
+        var element = this;
+        this.timerId = setTimeout(function () {
+          element.classList.add("image-magnified");
+        }, 1000);
+      };
+      div.onmouseout = function () {
+        clearTimeout(this.timerId);
+        this.classList.remove("image-magnified");
+      };
+
       var img = document.createElement("img");
       // img 태그 생성
       img.src = data[i]; // src에 datap[i] 인덱스 값을 소스로 전달.
@@ -37,6 +49,7 @@ req.onreadystatechange = function () {
 req.send();
 
 function selectAll(btn) {
+  // 인자의 btn은 onclick의 바인딩 된 input을 참조하여 값을 받아옴.
   var images = document.getElementsByClassName("image");
   // image를 포함한 div 태그를 검색
   for (var i = 0; i < images.length; i++) {
@@ -53,4 +66,20 @@ function selectAll(btn) {
     btn.value = "Unselect All";
   }
   // btn.value = "Unselect All";
+}
+
+function slideShow(btn) {
+  var images = document.getElementsByClassName("image");
+  var index = 0;
+  images[index].classList.add("image-magnified");
+
+  var intervalId = setInterval(function () {
+    images[index].classList.remove("image-magnified");
+    index++;
+    if (index < images.length) {
+      images[index].classList.add("image-magnified");
+    } else {
+      clearInterval(intervalId);
+    }
+  }, 1000);
 }
